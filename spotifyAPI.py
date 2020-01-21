@@ -1,20 +1,3 @@
-# import os,sys,json,spotipy,webbrowser,pyperclip
-# import spotipy.util as util
-# from json.decoder import JSONDecodeError
-# from spotipy.oauth2 import SpotifyClientCredentials
-
-
-# client_id = 'f9661a146caa40909c47e655d4f584b8'
-# client_secret = '4632899dfdc24090ae2e44aad97b359b'
-
-# client_credentials_manager = SpotifyClientCredentials(client_id=client_id,client_secret=client_secret)
-# sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
-# name = 'Taylor Swift'
-# result = sp.search(name)
-# print(json.dumps(result['tracks']['items'], indent=5))
-# sp._get("https://api.spotify.com/v1/playlists/21THa8j9TaSGuXYNBU5tsC/tracks")
-
 import os
 import sys
 import json
@@ -42,8 +25,7 @@ artists = ['Taylor Swift', 'Ariana Grande', 'Shawn Mendes', 'Maroon 5', 'Adele',
     'Kygo', 'The Chainsmokers', 'Illenium', 'Marshmello', 'Calvin Harris', 'Martin Garrix', 'Eden', 'Prince',
     'Coldplay', 'Elton John', 'OneRepublic', 'Jason Mraz', 'Metallica', 'The Beatles', 'Guns N\' Roses',
     'Frank Sinatra', 'Michael Bublé', 'Norah Jones', 'David Bowie']
-playlists = []
-n = 0
+playlists,track_uri = [],[]
 
 # Create our spotify object with permissions
 sp = spotipy.Spotify(auth=token)
@@ -55,7 +37,7 @@ print('Welcome %s to the Spotify API!' %(str(name[0])))
 print('You have %d followers.' %(followers))
 
 print('Searching for playlists...')
-for i in range(len(artists)):    
+for i in range(len(artists)-49):    
     searchq = "This Is " + artists[i]
     search = sp.search(searchq, type="playlist")
     if str.lower(search['playlists']['items'][0]['name']) == str.lower(searchq) and search['playlists']['items'][0]['owner']['id'] == 'spotify':
@@ -66,58 +48,34 @@ for i in range(len(artists)):
     else:
         print("Playlist not found for " + (str(artists[i])), end='\n')
 
+playlist_content = sp.user_playlist_tracks('spotify', playlist_id=playlist_id)
+for n in range(100):
+    try:
+        track = playlist_content['items'][n]['track']['uri']
+    except:
+        print("Total # of tracks are " + str(n-1))
+        break
+    track_uri.append(track)
+# print(track_uri)
+audio_feat = sp.audio_features(tracks=track_uri)
+aud = pandas.DataFrame(data=audio_feat)
+aud_mean = aud.mean()
+aud_mean = pandas.DataFrame(data=aud_mean)
+allfeat = pandas.DataFrame.append('allfeat','aud_mean')
+print(allfeat.head())
+# df.to_csv('audio_features.csv',sep=',', index=None)
+# print(df.mean())
+# print(df.head())
+
+# print(json.dumps(audio_feat, skipkeys=True, indent=4)) 
 # print("Total - " + str(n))
 
-print("Printing to CSV...")
-df = pandas.DataFrame(data=playlists)
-df.to_csv('playlisturi.csv', sep=',', index=False, header=False)
-print("Finished")
+# print("Printing to CSV...")
+# df = pandas.DataFrame(data=playlists)
+# df.to_csv('playlisturi.csv', sep=',', index=False, header=False)
+# print("Finished")
 
 
-
-
-
-    # with open('{}-content.json'.format(artists[i]), 'w') as outfile:
-    #     json.dump(search, outfile)
-# print(json.dumps(search['playlists']['items'], skipkeys=True, indent=4))
-
-    
-
-# tracks_url = search['playlists']['items']['tracks'][0]['href']
-# if search['playlists']['items'][0]['name'] = str.lower(searchq):
-# def get_playlist_content(playlist_id,sp):
-#     offset = 0
-#     songs = []
-#     while True:
-#         content = sp.user_playlist_tracks('spotify', playlist_id, fields = None, limit=100, offset=offset, market=None)
-#         songs += content['items']
-#         if content['next'] is not None:
-#             offset += 100
-#         else:
-#             break
-#     with open('{}-{}-content.json'.format(username, playlist_id), 'w') as outfile:
-#         json.dump(songs,outfile)
-        
-# def get_user_playlist(username, sp):
-#     playlists = sp.user_playlists('spotify', limit=200)
-#     for playlist in playlists['items']:
-#         print("Name: {}, Number of songs: {}, Playlist ID: {} ".
-#               format(playlist['name'], playlist['tracks']['total'],playlist['id']))
-
-# get_user_playlist('simar2222', sp)
-# # get_playlist_content('37i9dQZF1DX2rBR3X9E86S',sp)
-
-
-
-
-
-
-
-######################################################################
-# Loop through all artist names in the list - 50
-# Get the This Is playlist of the artist
-# Get the playlist id
-# Store all ids in a .csv file
 
 
 #https://spotipy.readthedocs.io/en/2.6.3/ -  audio_analysis, audio_features
