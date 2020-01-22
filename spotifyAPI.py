@@ -13,11 +13,12 @@ username = sys.argv[1]
 scope = 'user-read-private user-read-playback-state user-modify-playback-state'
 
 # Erase cache and prompt for user permission
+#Insert your client_id and client_secret here - 
 try:
-    token = util.prompt_for_user_token(username, scope, client_id='f9661a146caa40909c47e655d4f584b8',client_secret='4632899dfdc24090ae2e44aad97b359b',redirect_uri='https://www.google.com/') # add scope
+    token = util.prompt_for_user_token(username, scope, client_id='',client_secret='',redirect_uri='https://www.google.com/') # add scope
 except (AttributeError, JSONDecodeError):
     os.remove(f".cache-{username}")
-    token = util.prompt_for_user_token(username, scope) # add scope
+    token = util.prompt_for_user_token(username, scope, client_id='',client_secret='',redirect_uri='https://www.google.com/') # add scope
 
 # Artists for the analysis
 artists = ['Taylor Swift', 'Ariana Grande', 'Shawn Mendes', 'Maroon 5', 'Adele', 'Twenty One Pilots', 'Ed Sheeran', 'Justin Timberlake', 'Charlie Puth', 'John Mayer', 'Lorde', 'Fifth Harmony', 'Lana Del Rey', 'James Arthur',
