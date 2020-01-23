@@ -20,8 +20,9 @@ except (AttributeError, JSONDecodeError):
     token = util.prompt_for_user_token(username, scope, client_id='',client_secret='',redirect_uri='https://www.google.com/') # add client_id, client_secret
 
 # Artists for the analysis
-artists = ['Taylor Swift', 'Ariana Grande', 'Shawn Mendes', 'Maroon 5', 'Adele', 'Twenty One Pilots', 'Ed Sheeran', 'Justin Timberlake', 'Charlie Puth','Mumford & Sons', 'Lorde', 'Fifth Harmony', 'Lana Del Rey', 'James Arthur',
-    'Kendrick Lamar', 'Post Malone', 'Drake', 'Kanye West', 'Eminem', 'Future', 'Snoop Dogg', 'Macklemore', 'Jay-Z',
+artists = ['Taylor Swift', 'Ariana Grande', 'Shawn Mendes', 'Maroon 5', 'Adele', 'Twenty One Pilots', 'Ed Sheeran', 'Justin Timberlake', 'Charlie Puth','Mumford & Sons',
+    'Lorde', 'Fifth Harmony', 'Lana Del Rey', 'James Arthur',
+    'Kendrick Lamar', 'Post Malone', 'Queen', 'Kanye West', 'Eminem', 'Future', 'Snoop Dogg', 'Macklemore', 'Jay-Z',
     'Bruno Mars', 'Beyoncé', 'Drake', 'Stevie Wonder', 'John Legend', 'The Weeknd', 'Rihanna', 'Michael Jackson',
     'Kygo', 'The Chainsmokers', 'Illenium', 'Marshmello', 'Avicii', 'Martin Garrix', 'Eden', 'Prince',
     'Coldplay', 'Elton John', 'OneRepublic', 'Jason Mraz', 'Metallica', 'The Beatles', 'Guns N\' Roses',
@@ -42,7 +43,7 @@ followers = user['followers']['total']
 print('Welcome %s to the Spotify API!' %(str(name[0])))
 print('You have %d followers.' %(followers))
 
-print('Searching for playlists...')
+print('\nSearching for playlists...\n\n')
 
 
 def time_it():
@@ -53,7 +54,7 @@ def time_it():
 def search_playlist(result, query):
     if str.lower(result['playlists']['items'][0]['name']) == str.lower(query) and result['playlists']['items'][0]['owner']['id'] == 'spotify':
         playlist_id = result['playlists']['items'][0]['id']
-        print("Found for " + str(artists[i]))
+        print("Found the playlist " + searchq)
         return playlist_id
     else:
         print("Playlist not found for " + (str(artists[i])), end='\n')
@@ -73,7 +74,7 @@ for i in range(len(artists)):
     aud = pandas.DataFrame(data=audio_feat)     # Insert into dataframe
     aud_mean = aud.mean()   # Mean of all features of 'This Is artist' tracks to get a summary of artist
     allfeatures = pandas.DataFrame.append(allfeatures, aud_mean, ignore_index=True)     # Append all summaries of artists to single dataframe
-    print("#%d. Audio features for %s extracted." %(i+1,artists[i]))
+    print("#%d. Audio features for %s extracted.\n" %(i+1,artists[i]))
 
 allfeatures = allfeatures.set_index([pandas.Index(artists)])    # Set index of features from artists list
 # print(allfeatures.head())
