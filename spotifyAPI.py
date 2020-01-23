@@ -21,7 +21,7 @@ except (AttributeError, JSONDecodeError):
 
 # Artists for the analysis
 artists = ['Taylor Swift', 'Ariana Grande', 'Shawn Mendes', 'Maroon 5', 'Adele', 'Twenty One Pilots', 'Ed Sheeran', 'Justin Timberlake', 'Charlie Puth','Mumford & Sons',
-    'Lorde', 'Fifth Harmony', 'Lana Del Rey', 'James Arthur',
+    'Lorde', 'Linkin Park', 'Lana Del Rey', 'James Arthur',
     'Kendrick Lamar', 'Post Malone', 'Queen', 'Kanye West', 'Eminem', 'Future', 'Snoop Dogg', 'Macklemore', 'Jay-Z',
     'Bruno Mars', 'Beyoncé', 'Drake', 'Stevie Wonder', 'John Legend', 'The Weeknd', 'Rihanna', 'Michael Jackson',
     'Kygo', 'The Chainsmokers', 'Illenium', 'Marshmello', 'Avicii', 'Martin Garrix', 'Eden', 'Prince',
@@ -54,7 +54,7 @@ def time_it():
 def search_playlist(result, query):
     if str.lower(result['playlists']['items'][0]['name']) == str.lower(query) and result['playlists']['items'][0]['owner']['id'] == 'spotify':
         playlist_id = result['playlists']['items'][0]['id']
-        print("Found the playlist " + searchq)
+        print("Found playlist - " + searchq)
         return playlist_id
     else:
         print("Playlist not found for " + (str(artists[i])), end='\n')
