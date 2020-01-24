@@ -6,9 +6,9 @@ Each artist is unique in his style. Let it be *Eminem* who can dazzle everyone w
 
 Spotify is the most used audio streaming platform in the world. Today, it provides it's listeners with all kinds of music, podcasts and even videos from artists they love. Launched in 2008, it now provides access to over 50 million tracks worldwide. I'm sure you must be familiar with it by now and how it has made music easily accessible to all parts of the world.
 Spotify recently launched a variety of playlists curated specifically for each user. These include:
-1. Release Radar: a personalized playlist that allows users to stay up-to-date on new music released by artists they listen to the most.
-2. Discover Weekly: a weekly generated playlist (updated on Mondays) that brings users two hours of custom-made music recommendations, mixing a user’s personal taste with songs enjoyed by similar listeners.
-3. Daily Mix: a series of playlists that have “near endless playback” and mixes the user’s favorite tracks with new, recommended songs.
+1. *Release Radar*: a personalized playlist that allows users to stay up-to-date on new music released by artists they listen to the most.
+2. *Discover Weekly*: a weekly generated playlist (updated on Mondays) that brings users two hours of custom-made music recommendations, mixing a user’s personal taste with songs enjoyed by similar listeners.
+3. *Daily Mix*: a series of playlists that have “near endless playback” and mixes the user’s favorite tracks with new, recommended songs.
 
 With these, I also recently discovered that Spotify has a 'This Is' playlist for every artist on the platform comprising of their most heard or most popular hits. One of Spotify’s best original features, “This Is” delivers on a major promise of the streaming revolution — the canonization and preservation of great artists’ repertoires for future generations to discover and appreciate. Spotify has provided us a shortcut, giving us curated lists for every artist and making it easier to discover new artists with their topmost tracks.
 
@@ -43,6 +43,7 @@ Now, you can edit the artists list in the program with artists of your choice. P
 
 Now, sit back and relax and watch the magic happen!
 The program will extract audio features of all songs in the artists' 'This Is' playlist, calculate their *mean* and save them under each of their names. These features are initally saved to a Pandas DataFrame and then exported to [audio_features.csv](https://github.com/Sumat2222/Spotify-Master-Analysis/blob/master/audio_features.csv).
+You can better view the analysis at [Spotify Master Analysis](https://nbviewer.jupyter.org/github/Sumat2222/Spotify-Master-Analysis/blob/master/Spotify%20Artists%20%26%20Music%20EDA.ipynb).
 
 ### Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
