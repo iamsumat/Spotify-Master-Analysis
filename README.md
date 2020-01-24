@@ -1,5 +1,5 @@
 # SPOTIFY MASTER ANALYSIS
-An in-depth EDA of the top 50 artists of Spotify.
+An exploratory data analysis and data visualization project using data from Spotify Web API.
 
 ### Introduction
 Each artist is unique in his style. Let it be *Eminem* who can dazzle everyone with his words or *Marshmello*, who you can bang your head to. Whether, you're a fan of *The Beatles* or you've been following *Coldplay* since they released their single 'Yellow', you'll know how music from each artist/band differs in so many ways.
