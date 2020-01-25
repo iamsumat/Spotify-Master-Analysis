@@ -12,6 +12,9 @@ t0 = time.time() # Initial timestamp
 username = sys.argv[1]
 scope = 'user-read-private user-read-playback-state user-modify-playback-state'
 
+client_id = input("Please input your client_id: ")
+client_secret = print("Please input your client_secret:")
+
 # Erase cache and prompt for user permission
 try:
     token = util.prompt_for_user_token(username, scope, client_id='',client_secret='',redirect_uri='https://www.google.com/') # add client_id, client_secret
